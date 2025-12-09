@@ -1,0 +1,102 @@
+:root {
+  --max-width: 720px;
+  --font-main: system-ui, sans-serif;
+  --bg-light: #ffffff;
+  --text-light: #333;
+  --bg-dark: #111;
+  --text-dark: #ddd;
+  --link-light: #0066cc;
+  --link-dark: #66ccff;
+  --heading-light: #111;
+  --heading-dark: #fff;
+}
+
+body {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: var(--max-width);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light a {
+  color: var(--link-light);
+}
+
+body.light h1, body.light h2, body.light h3 {
+  color: var(--heading-light);
+}
+
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark a {
+  color: var(--link-dark);
+}
+
+body.dark h1, body.dark h2, body.dark h3 {
+  color: var(--heading-dark);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav a {
+  margin-right: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+}
+
+.list-item .left {
+  flex: 1;
+}
+
+.list-item .summary {
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
+.list-item .right {
+  white-space: nowrap;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+a.blog-tags {
+  line-height: 2;
+  margin-right: 12px;
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}

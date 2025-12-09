@@ -1,0 +1,19 @@
+<li class="list-item">
+  <div class="left">
+    {{ if .Params.link }}
+      <a href="{{ .Params.link }}" target="_blank">{{ .Title }} ↪</a>
+    {{ else }}
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
+
+    {{ if .Summary }}
+      <p class="summary">{{ .Summary }}</p>
+    {{ end }}
+  </div>
+
+  <div class="right">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">
+      {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+    </time>
+  </div>
+</li>

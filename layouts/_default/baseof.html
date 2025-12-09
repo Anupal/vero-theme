@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  {{ partial "head.html" . -}}
+  <body>
+    {{ partial "header.html" . -}}
+    <nav>
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <main>
+    {{ block "main" . }}
+    </main>
+    {{ end }}
+    {{ partial "footer.html" . -}}
+  </body>
+
+
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Set initial theme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    body.classList.add(initialTheme);
+    toggleButton.textContent = initialTheme === 'dark' ? '☀️' : '🌙';
+
+    // Toggle and save theme
+    toggleButton.addEventListener('click', () => {
+      const isDark = body.classList.toggle('dark');
+      body.classList.toggle('light', !isDark);
+      toggleButton.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</html>
