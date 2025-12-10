@@ -1,13 +1,16 @@
 {{ define "main" }}
-<ul>
+{{ if .Data.Singular }}
+<p class="blog-filter">Tag: "{{ .Title }}"</p>
+{{ end }}
+<ul class="blog-list">
 {{ range .Pages.ByPublishDate.Reverse }}
-  {{- partial "listitem.html" . -}}
+{{- partial "listitem.html" . -}}
 {{ end }}
 </ul>
-
-<div>
+<div class="tags">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="fill-background stroke-foreground group-hover:fill-foreground group-hover:stroke-background size-5 stroke-1"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M11.172 2a3 3 0 0 1 2.121 .879l7.71 7.71a3.41 3.41 0 0 1 0 4.822l-5.592 5.592a3.41 3.41 0 0 1 -4.822 0l-7.71 -7.71a3 3 0 0 1 -.879 -2.121v-5.172a4 4 0 0 1 4 -4zm-3.672 3.5a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2"></path></svg>
   {{ range .Site.Taxonomies.tags }}
-    <a class="blog-tags" href="{{ .Page.RelPermalink }}">#{{ lower .Page.Title }}</a>
+  <a class="blog-tag" href="{{ .Page.RelPermalink }}">{{ lower .Page.Title }}</a>
   {{ end }}
 </div>
 {{ end }}
