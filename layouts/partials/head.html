@@ -7,5 +7,6 @@
   <meta name="keywords" content="{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}" />
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/syntax.css` }}">
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/style.css` }}">
+  <link rel="icon" type="image/x-icon" href="{{ absURL `images/favicon.ico` }}">
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 </head>
