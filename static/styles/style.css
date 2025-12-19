@@ -53,6 +53,16 @@ header a {
   text-decoration: none;
 }
 
+header h2, header h2 a, header a:hover, header svg:hover {
+  color: var(--special-color);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
 header nav a {
   margin-left: 1rem;
   color: var(--heading-color);
@@ -63,16 +73,7 @@ header nav a {
   font-family: var(--font-special);
 }
 
-header h2, header h2 a, header a:hover, header svg:hover {
-  color: var(--special-color);
-}
-
-header nav {
-  display: flex;
-  align-items: center;
-}
-
-header svg {
+header nav a svg {
   color: var(--dull-color);
   display: block;
   height: 1.1rem;
@@ -249,12 +250,11 @@ footer {
   }
 
   header h2 {
-    margin: 5px;
+    margin: 2px;
   }
 
   header .title {
     justify-content: center;
-    margin-bottom: 0.5rem;
   }
 
   header nav {
@@ -262,9 +262,7 @@ footer {
     width: 100%;
   }
 
-  header nav a,
-  header nav button {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+  header nav a {
+    font-size: 1.1rem;
   }
 }
