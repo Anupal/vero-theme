@@ -249,3 +249,30 @@ footer {
   font-size: 0.9rem;
   color: var(--dull-color);
 }
+
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header h2 {
+    margin: 5px;
+  }
+
+  header .title {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  header nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  header nav a,
+  header nav button {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+}
