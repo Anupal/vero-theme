@@ -34,7 +34,6 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  align-items: center;
 }
 
 header .title {
@@ -47,21 +46,25 @@ header .profile-image {
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 0.5rem;
 }
 
 header a {
-  margin-left: 1rem;
-  color: var(--heading-color);
-  letter-spacing: 0.05em;
   text-decoration: none;
 }
 
-header h2, header h2 a, header a:hover, svg:hover {
-  color: var(--special-color);
+header nav a {
+  margin-left: 1rem;
+  color: var(--heading-color);
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-special);
 }
 
-header :not(h2) > a {
-  font-family: var(--font-special);
+header h2, header h2 a, header a:hover, header svg:hover {
+  color: var(--special-color);
 }
 
 header nav {
@@ -69,20 +72,9 @@ header nav {
   align-items: center;
 }
 
-header a {
-  border: none;
-  background-color: var(--bg-color);
-  padding: 0;
-  margin-left: 1rem;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
 header svg {
   color: var(--dull-color);
-  display: inline-block;
+  display: block;
   height: 1.1rem;
 }
 
