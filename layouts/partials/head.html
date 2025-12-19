@@ -8,5 +8,9 @@
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/syntax.css` }}">
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/style.css` }}">
   <link rel="icon" type="image/x-icon" href="{{ absURL `images/favicon.ico` }}">
+  {{ with .OutputFormats.Get "rss" }}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>`
+      .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+  {{ end }}
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 </head>
