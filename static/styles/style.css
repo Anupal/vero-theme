@@ -50,6 +50,7 @@ blockquote {
 }
 
 code {
+  background-attachment: fixed;
   background-color: var(--color-mesh-bg);
   background-image: radial-gradient(var(--color-mesh-fg) 1px, transparent 1px);
   background-size: 5px 5px;
@@ -286,6 +287,7 @@ a.blog-list-item-link:hover {
 }
 
 .mesh {
+  background-attachment: fixed;
   background-color: var(--color-mesh-bg);
   background-image: radial-gradient(var(--color-mesh-fg) 1px, transparent 1px);
   background-size: 5px 5px;
@@ -309,6 +311,10 @@ svg.social {
 
 /* || Mobile screens */
 @media (max-width: 48.75em) {
+  code {
+    background-image: radial-gradient(var(--color-mesh-fg) 0.5px, transparent 0.5px);
+  }
+
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -316,5 +322,9 @@ svg.social {
 
   header div {
     padding-bottom: 1vh;
+  }
+
+  .mesh {
+    background-image: radial-gradient(var(--color-mesh-fg) 0.5px, transparent 0.5px);
   }
 }
