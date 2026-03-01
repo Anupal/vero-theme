@@ -1,10 +1,17 @@
 <li>
-  {{ if .Params.link }}
-    <a href="{{ .Params.link }}" target="_blank">{{ .Title }} ↪</a>
-  {{ else }}
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  <div class="mesh mesh-border blog-list-item">
+    {{ if .Params.link }}
+    <a class="blog-list-item-link" href="{{ .Params.link }}" target="_blank">
+    {{ else }}
+    <a class="blog-list-item-link" href="{{ .RelPermalink }}">
     {{ end }}
-    <time datetime="{{ .Date.Format "2006-01-02" }}">
-      {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
-    </time>
+      <div class="blog-list-item-header">
+        <span>{{ .Title }}</span>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+        </time>
+      </div>
+      <p class="blog-list-item-summary">{{ .Summary }}</p>
+    </a>
+  </div>
 </li>
