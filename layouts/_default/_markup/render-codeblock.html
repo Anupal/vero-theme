@@ -9,7 +9,8 @@
   {{ with .Attributes.title }}
     <span class="codeblock-title">{{ . }}</span>
   {{ end }}
-  <pre class="chroma"><code>{{ $result.Inner }}</code></pre>
+  <!-- <pre class="chroma"><code>{{ $result.Inner }}</code></pre> -->
+  {{ $result.Wrapped }}
 </div>
 <script>
 function copyCode(btn) {
