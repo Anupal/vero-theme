@@ -153,7 +153,7 @@ code {
 
 pre code {
   display: block;
-  padding: 20px;
+  padding: 12px;
   white-space: pre-wrap;
   overflow-x: auto;
   text-wrap: nowrap;
@@ -161,21 +161,49 @@ pre code {
 
 .codeblock {
   position: relative;
+  border: 1px solid var(--color-text-subtle);
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .codeblock-title {
-  display: block;
   font-family: var(--font-code);
   font-size: 0.85rem;
   color: var(--color-text-muted);
-  padding: 6px 20px;
+  padding: 8px 12px;
+  background-color: var(--color-mesh-bg);
   border-bottom: 1px solid var(--color-text-subtle);
+}
+
+.codeblock-body {
+  position: relative;
+}
+
+/* remove border/radius from inner elements since codeblock handles it */
+.codeblock pre {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+}
+
+.codeblock code {
+  border: none;
+  border-radius: 0;
+  /* background: none; */
+}
+
+/* command prompt */
+.codeblock-command .codeblock-title::before {
+  content: "$ ";
+  color: var(--color-secondary);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .codeblock-copy {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 4px;
+  right: 4px;
   background: var(--color-text-code-bg);
   border: 1px solid var(--color-text-subtle);
   border-radius: 4px;
@@ -183,6 +211,7 @@ pre code {
   padding: 4px 6px;
   color: var(--color-text-muted);
   transition: color 0.2s ease, border-color 0.2s ease;
+  z-index: 1;
 }
 
 .codeblock-copy:hover {
@@ -191,8 +220,8 @@ pre code {
 }
 
 .codeblock-copy.copied {
-  color: green;
-  border-color: green;
+  border-color: var(--color-primary);
+  border-width: 2px;
 }
 
 /* || Footer */

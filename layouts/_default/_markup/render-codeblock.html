@@ -1,23 +1,43 @@
 {{ $result := transform.HighlightCodeBlock . }}
 
-<div class="codeblock">
+{{ $isCommand := .Attributes.command }}
+<div class="codeblock {{ if $isCommand }}codeblock-command{{ end }}" {{ if $isCommand }}data-command="{{ .Attributes.title }}"{{ end }}>
   <button class="codeblock-copy" onclick="copyCode(this)" aria-label="Copy code">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
     </svg>
   </button>
   {{ with .Attributes.title }}
-    <span class="codeblock-title">{{ . }}</span>
+    <div class="codeblock-title">{{ . }}</div>
   {{ end }}
-  <!-- <pre class="chroma"><code>{{ $result.Inner }}</code></pre> -->
-  {{ $result.Wrapped }}
+  <div class="codeblock-body">
+    {{ $result.Wrapped }}
+  </div>
 </div>
 <script>
 function copyCode(btn) {
-  const code = btn.nextElementSibling.querySelector("code").innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    btn.classList.add("copied");
-    setTimeout(() => btn.classList.remove("copied"), 2000);
-  });
+  const codeblock = btn.closest(".codeblock");
+  const command = codeblock.dataset.command;
+  const text = command || codeblock.querySelector("code").innerText;
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showCopied(btn));
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    showCopied(btn);
+  }
+}
+
+function showCopied(btn) {
+  btn.classList.add("copied");
+  setTimeout(() => btn.classList.remove("copied"), 2000);
 }
 </script>
