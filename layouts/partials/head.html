@@ -6,7 +6,12 @@
   <meta name="author" content="{{ with .Params.author }}{{ . }}{{ end }}" />
   <meta name="keywords" content="{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}" />
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/fonts.css` }}">
-  <link rel="stylesheet" type="text/css" href="{{ absURL `styles/syntax.css` }}">
+  <script>
+    const __theme = localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.write('<link rel="stylesheet" type="text/css" id="syntax-css" href="/styles/syntax.' + __theme + '.css">');
+    document.documentElement.setAttribute("data-theme", __theme);
+  </script>
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/style.css` }}">
   <link rel="icon" type="image/x-icon" href="{{ absURL `images/favicon.ico` }}">
   {{ with .OutputFormats.Get "rss" }}

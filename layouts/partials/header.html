@@ -24,23 +24,21 @@
 </header>
 
 <script>
-  function applyTheme(dark) {
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-    document.getElementById("theme-icon-dark").style.display = dark ? "none" : "inline";
-    document.getElementById("theme-icon-light").style.display = dark ? "inline" : "none";
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }
+function applyTheme(dark) {
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  document.getElementById("theme-icon-dark").style.display = dark ? "none" : "inline";
+  document.getElementById("theme-icon-light").style.display = dark ? "inline" : "none";
+  const syntaxLink = document.querySelector("#syntax-css") || document.getElementById("syntax-css");
+  if (syntaxLink) syntaxLink.href = dark ? "/styles/syntax.dark.css" : "/styles/syntax.light.css";
+  localStorage.setItem("theme", dark ? "dark" : "light");
+}
 
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute("data-theme");
-    applyTheme(current !== "dark");
-  }
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme");
+  applyTheme(current !== "dark");
+}
 
-  // Apply saved theme or system preference on load
-  const saved = localStorage.getItem("theme");
-  if (saved) {
-    applyTheme(saved === "dark");
-  } else {
-    applyTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-  }
+// Icons only — theme is already applied in head.html
+const __current = document.documentElement.getAttribute("data-theme");
+applyTheme(__current === "dark");
 </script>
